@@ -7,53 +7,64 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body class="min-h-screen bg-white">
+<body class="min-h-screen bg-gray-900 text-white">
     <div class="container mx-auto px-4 py-8">
-        <h1 class="text-3xl font-bold text-center mb-8 text-black">Matrix Calculator by Dewi Al Awaliah</h1>
-
-        <div class="bg-gray-100 rounded-lg shadow-lg p-6 mb-8">
+        <h1 class="text-3xl font-bold text-center mb-8 text-white">Matrix Calculator by Dewi Al Awaliah</h1>
+        
+        <div class="bg-gray-800 rounded-lg shadow-lg p-6 mb-8">
             <div class="flex flex-wrap justify-center gap-8 mb-8">
                 <!-- Matrix A -->
                 <div class="matrix-container">
-                    <h2 class="text-xl font-semibold mb-4 text-center text-blue-600">Matrix A</h2>
-                    <div id="matrixA" class="grid grid-cols-3 gap-2 mb-4"></div>
-                    <div class="flex justify-center gap-2">
-                        <button onclick="changeMatrixSize('A', 'row', -1)" class="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded">- Row</button>
-                        <button onclick="changeMatrixSize('A', 'row', 1)" class="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded">+ Row</button>
-                        <button onclick="changeMatrixSize('A', 'col', -1)" class="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded">- Col</button>
-                        <button onclick="changeMatrixSize('A', 'col', 1)" class="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded">+ Col</button>
-                        <button onclick="fillRandom('A')" class="bg-blue-300 hover:bg-blue-400 px-3 py-1 rounded text-white">Random A</button>
+                    <h2 class="text-xl font-semibold mb-4 text-center text-blue-300">Matrix A</h2>
+                    <div id="matrixA" class="grid gap-2 mb-4"></div>
+                    <div class="flex justify-center gap-2 flex-wrap">
+                        <button onclick="changeMatrixSize('A', 'row', -1)" class="bg-gray-200 text-black px-3 py-1 rounded">- Row</button>
+                        <button onclick="changeMatrixSize('A', 'row', 1)" class="bg-gray-200 text-black px-3 py-1 rounded">+ Row</button>
+                        <button onclick="changeMatrixSize('A', 'col', -1)" class="bg-gray-200 text-black px-3 py-1 rounded">- Col</button>
+                        <button onclick="changeMatrixSize('A', 'col', 1)" class="bg-gray-200 text-black px-3 py-1 rounded">+ Col</button>
+                        <button onclick="randomizeMatrix('A')" class="bg-yellow-400 text-black px-3 py-1 rounded"><i class="fas fa-random"></i> Random A</button>
                     </div>
                 </div>
 
                 <!-- Matrix B -->
                 <div class="matrix-container">
-                    <h2 class="text-xl font-semibold mb-4 text-center text-purple-600">Matrix B</h2>
-                    <div id="matrixB" class="grid grid-cols-3 gap-2 mb-4"></div>
-                    <div class="flex justify-center gap-2">
-                        <button onclick="changeMatrixSize('B', 'row', -1)" class="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded">- Row</button>
-                        <button onclick="changeMatrixSize('B', 'row', 1)" class="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded">+ Row</button>
-                        <button onclick="changeMatrixSize('B', 'col', -1)" class="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded">- Col</button>
-                        <button onclick="changeMatrixSize('B', 'col', 1)" class="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded">+ Col</button>
-                        <button onclick="fillRandom('B')" class="bg-purple-400 hover:bg-purple-500 px-3 py-1 rounded text-white">Random B</button>
+                    <h2 class="text-xl font-semibold mb-4 text-center text-purple-300">Matrix B</h2>
+                    <div id="matrixB" class="grid gap-2 mb-4"></div>
+                    <div class="flex justify-center gap-2 flex-wrap">
+                        <button onclick="changeMatrixSize('B', 'row', -1)" class="bg-gray-200 text-black px-3 py-1 rounded">- Row</button>
+                        <button onclick="changeMatrixSize('B', 'row', 1)" class="bg-gray-200 text-black px-3 py-1 rounded">+ Row</button>
+                        <button onclick="changeMatrixSize('B', 'col', -1)" class="bg-gray-200 text-black px-3 py-1 rounded">- Col</button>
+                        <button onclick="changeMatrixSize('B', 'col', 1)" class="bg-gray-200 text-black px-3 py-1 rounded">+ Col</button>
+                        <button onclick="randomizeMatrix('B')" class="bg-yellow-400 text-black px-3 py-1 rounded"><i class="fas fa-random"></i> Random B</button>
                     </div>
                 </div>
             </div>
 
+            <!-- Operations -->
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                <button onclick="performOperation('add')" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded">+ Add</button>
+                <button onclick="performOperation('subtract')" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded">− Subtract</button>
+                <button onclick="performOperation('multiply')" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded">× Multiply</button>
+                <button onclick="performOperation('transposeA')" class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded">Transpose A</button>
+                <button onclick="performOperation('transposeB')" class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded">Transpose B</button>
+                <button onclick="performOperation('determinantA')" class="bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded">Determinant A</button>
+                <button onclick="clearMatrices()" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded">Clear</button>
+            </div>
+
             <!-- Result -->
-            <div class="result-container">
-                <h2 class="text-xl font-semibold mb-4 text-center text-yellow-600">Result</h2>
-                <div id="resultMatrix" class="grid gap-2 mb-4 flex justify-center"></div>
-                <div id="scalarResult" class="text-center text-2xl font-bold text-green-600 hidden"></div>
+            <div>
+                <h2 class="text-xl font-semibold mb-4 text-center text-yellow-300">Result</h2>
+                <div id="resultMatrix" class="grid gap-2 mb-4 justify-center"></div>
+                <div id="scalarResult" class="text-center text-2xl font-bold text-green-400 hidden"></div>
             </div>
         </div>
     </div>
 
     <script>
-        let matrixA = { rows: 2, cols: 2, data: [[0,0],[0,0]] };
-        let matrixB = { rows: 2, cols: 2, data: [[0,0],[0,0]] };
+        let matrixA = { rows: 2, cols: 2, data: [[0, 0], [0, 0]] };
+        let matrixB = { rows: 2, cols: 2, data: [[0, 0], [0, 0]] };
 
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', function() {
             renderMatrix('A');
             renderMatrix('B');
         });
@@ -62,17 +73,17 @@
             const matrix = name === 'A' ? matrixA : matrixB;
             const container = document.getElementById(`matrix${name}`);
             container.innerHTML = '';
-            container.style.gridTemplateColumns = `repeat(${matrix.cols}, minmax(0, 1fr))`;
+            container.style.gridTemplateColumns = `repeat(${matrix.cols}, minmax(0, 3rem))`;
 
             for (let i = 0; i < matrix.rows; i++) {
                 for (let j = 0; j < matrix.cols; j++) {
                     const input = document.createElement('input');
                     input.type = 'number';
-                    input.value = matrix.data[i]?.[j] || 0;
-                    input.className = 'w-full p-2 border rounded text-center';
+                    input.value = matrix.data[i][j];
+                    input.className = 'w-full p-2 border rounded text-center text-black';
                     input.dataset.row = i;
                     input.dataset.col = j;
-                    input.addEventListener('input', function() {
+                    input.addEventListener('input', function () {
                         updateMatrixData(name, i, j, parseFloat(this.value) || 0);
                     });
                     container.appendChild(input);
@@ -82,38 +93,139 @@
 
         function updateMatrixData(name, row, col, value) {
             const matrix = name === 'A' ? matrixA : matrixB;
-            if (!matrix.data[row]) matrix.data[row] = [];
             matrix.data[row][col] = value;
         }
 
-        function changeMatrixSize(name, dimension, change) {
+        function changeMatrixSize(name, type, change) {
             const matrix = name === 'A' ? matrixA : matrixB;
-            const size = dimension === 'row' ? matrix.rows : matrix.cols;
+            const size = type === 'row' ? matrix.rows : matrix.cols;
             const newSize = size + change;
             if (newSize < 1) return;
 
-            if (dimension === 'row') {
+            if (type === 'row') {
                 matrix.rows = newSize;
-                if (change > 0) matrix.data.push(new Array(matrix.cols).fill(0));
-                else matrix.data.pop();
+                if (change > 0) {
+                    matrix.data.push(new Array(matrix.cols).fill(0));
+                } else {
+                    matrix.data.pop();
+                }
             } else {
                 matrix.cols = newSize;
-                matrix.data.forEach(row => {
-                    if (change > 0) row.push(0);
-                    else row.pop();
-                });
+                for (let i = 0; i < matrix.rows; i++) {
+                    if (change > 0) {
+                        matrix.data[i].push(0);
+                    } else {
+                        matrix.data[i].pop();
+                    }
+                }
             }
             renderMatrix(name);
         }
 
-        function fillRandom(name) {
+        function randomizeMatrix(name) {
             const matrix = name === 'A' ? matrixA : matrixB;
             for (let i = 0; i < matrix.rows; i++) {
                 for (let j = 0; j < matrix.cols; j++) {
-                    matrix.data[i][j] = Math.floor(Math.random() * 21) - 10; // Random -10 to 10
+                    matrix.data[i][j] = Math.floor(Math.random() * 21) - 10; // range -10 to 10
                 }
             }
             renderMatrix(name);
+        }
+
+        function performOperation(op) {
+            switch (op) {
+                case 'add':
+                    if (matrixA.rows !== matrixB.rows || matrixA.cols !== matrixB.cols) return alert('Same size needed');
+                    displayResultMatrix(addMatrices(matrixA, matrixB));
+                    break;
+                case 'subtract':
+                    if (matrixA.rows !== matrixB.rows || matrixA.cols !== matrixB.cols) return alert('Same size needed');
+                    displayResultMatrix(subtractMatrices(matrixA, matrixB));
+                    break;
+                case 'multiply':
+                    if (matrixA.cols !== matrixB.rows) return alert('Cols A must match Rows B');
+                    displayResultMatrix(multiplyMatrices(matrixA, matrixB));
+                    break;
+                case 'transposeA':
+                    displayResultMatrix(transposeMatrix(matrixA));
+                    break;
+                case 'transposeB':
+                    displayResultMatrix(transposeMatrix(matrixB));
+                    break;
+                case 'determinantA':
+                    if (matrixA.rows !== matrixA.cols) return alert('Matrix A must be square');
+                    displayScalarResult(calculateDeterminant(matrixA.data));
+                    break;
+            }
+        }
+
+        function addMatrices(a, b) {
+            return { rows: a.rows, cols: a.cols, data: a.data.map((row, i) => row.map((v, j) => v + b.data[i][j])) };
+        }
+
+        function subtractMatrices(a, b) {
+            return { rows: a.rows, cols: a.cols, data: a.data.map((row, i) => row.map((v, j) => v - b.data[i][j])) };
+        }
+
+        function multiplyMatrices(a, b) {
+            const result = { rows: a.rows, cols: b.cols, data: [] };
+            for (let i = 0; i < a.rows; i++) {
+                result.data[i] = [];
+                for (let j = 0; j < b.cols; j++) {
+                    result.data[i][j] = a.data[i].reduce((sum, v, k) => sum + v * b.data[k][j], 0);
+                }
+            }
+            return result;
+        }
+
+        function transposeMatrix(m) {
+            const data = [];
+            for (let i = 0; i < m.cols; i++) {
+                data[i] = [];
+                for (let j = 0; j < m.rows; j++) {
+                    data[i][j] = m.data[j][i];
+                }
+            }
+            return { rows: m.cols, cols: m.rows, data };
+        }
+
+        function calculateDeterminant(m) {
+            if (m.length === 1) return m[0][0];
+            if (m.length === 2) return m[0][0]*m[1][1] - m[0][1]*m[1][0];
+            return m[0].reduce((det, val, i) => {
+                const minor = m.slice(1).map(row => row.filter((_, j) => j !== i));
+                return det + val * Math.pow(-1, i) * calculateDeterminant(minor);
+            }, 0);
+        }
+
+        function displayResultMatrix(m) {
+            const container = document.getElementById('resultMatrix');
+            const scalar = document.getElementById('scalarResult');
+            scalar.classList.add('hidden');
+            container.innerHTML = '';
+            container.style.gridTemplateColumns = `repeat(${m.cols}, minmax(0, 3rem))`;
+            m.data.flat().forEach(val => {
+                const div = document.createElement('div');
+                div.className = 'p-2 border rounded bg-white text-black text-center';
+                div.textContent = val;
+                container.appendChild(div);
+            });
+        }
+
+        function displayScalarResult(val) {
+            document.getElementById('resultMatrix').innerHTML = '';
+            const scalar = document.getElementById('scalarResult');
+            scalar.textContent = `Determinant: ${val}`;
+            scalar.classList.remove('hidden');
+        }
+
+        function clearMatrices() {
+            matrixA = { rows: 2, cols: 2, data: [[0, 0], [0, 0]] };
+            matrixB = { rows: 2, cols: 2, data: [[0, 0], [0, 0]] };
+            document.getElementById('scalarResult').classList.add('hidden');
+            document.getElementById('resultMatrix').innerHTML = '';
+            renderMatrix('A');
+            renderMatrix('B');
         }
     </script>
 </body>
